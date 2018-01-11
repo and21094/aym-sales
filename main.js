@@ -1,5 +1,7 @@
 const {app, BrowserWindow, ipcMain} = require('electron');
 const {autoUpdater} = require("electron-updater");
+const url = require('url');
+const path = require('path');
 let win;
 function createWindow () {
   // Create the browser window.
@@ -9,9 +11,15 @@ function createWindow () {
     backgroundColor: '#ffffff',
     icon: `file://${__dirname}/dist/assets/logo.png`
   })
-  win.loadURL(`file://${__dirname}/dist/index.html`)
+  // win.loadURL(`file://${__dirname}/dist/index.html`)
+  // and load the index.html of the app.
+  win.loadURL(url.format({
+    pathname: path.join(__dirname, '/dist/index.html'),
+    protocol: 'file:',
+    slashes: true,
+  }));
   //// uncomment below to open the DevTools.
-  // win.webContents.openDevTools()
+  win.webContents.openDevTools()
   // Event when the window is closed.
   win.on('closed', function () {
     win = null
