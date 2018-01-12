@@ -1,7 +1,7 @@
 {
   "name": "aym-sales",
   "author": "A&M <aymcode@gmail.com>",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "main": "main.js",
   "description": "Punto de ventas rápido y facil de usar pensado para ser una opción accesible para todos.",

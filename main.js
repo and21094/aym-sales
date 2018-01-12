@@ -24,8 +24,7 @@ function createWindow () {
   win.on('closed', function () {
     win = null
   })
-  // check for updates
-  autoUpdater.checkForUpdates();
+  
 }
 // Create window on electron intialization
 app.on('ready', createWindow)
@@ -45,10 +44,13 @@ app.on('activate', function () {
 
 // when the update has been downloaded and is ready to be installed, notify the BrowserWindow
 autoUpdater.on('update-downloaded', (info) => {
-    win.webContents.send('updateReady')
+    win.webContents.send('update-ready')
 });
 
-// when receiving a quitAndInstall signal, quit and install the new version ;)
-ipcMain.on("quitAndInstall", (event, arg) => {
+// when receiving a install-update signal, quit and install the new version ;)
+ipcMain.on("install-update", (event, arg) => {
     autoUpdater.quitAndInstall();
 })
+
+// check for updates
+autoUpdater.checkForUpdates();
