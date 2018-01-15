@@ -53,4 +53,4 @@ ipcMain.on("install-update", (event, arg) => {
 })
 
 // check for updates
-autoUpdater.checkForUpdates();
+// autoUpdater.checkForUpdates();
