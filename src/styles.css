@@ -2,5 +2,16 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 body {
-    background:lightgray;
+    background:#fafafa;
+    font-family: 'Roboto';
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.center-text{
+	text-align: center !important;
+	justify-content: center;
 }
