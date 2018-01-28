@@ -7,6 +7,12 @@
     <mat-icon>exit_to_app</mat-icon>
     Salir
   </button>
+  
+  <button mat-button [routerLink]="[{ outlets: { menuOutlet: ['cashbox'] } }]">
+      <mat-icon>payment</mat-icon>
+      Caja
+    </button>
+
 </mat-toolbar>
 <div class="menuContainer">
 	<router-outlet name='menuOutlet'></router-outlet>
