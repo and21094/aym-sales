@@ -1,6 +1,13 @@
 <mat-toolbar color="primary">A&M-Sales
-  <button mat-button>
+  <button mat-button [routerLink]="[{ outlets: { menuOutlet: ['bills'] } }]">
     <mat-icon>library_books</mat-icon>
     Facturación
-  </button>  
+  </button>
+  <button mat-button routerLink="/login" style="position: absolute; right: 0;">
+    <mat-icon>exit_to_app</mat-icon>
+    Salir
+  </button>
 </mat-toolbar>
+<div class="menuContainer">
+	<router-outlet name='menuOutlet'></router-outlet>
+</div>

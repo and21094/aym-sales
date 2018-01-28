@@ -7,6 +7,7 @@ import {routing} from './app.routing';
 import { AppComponent } from './app.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { LoginComponent } from './login/login.component';
+import { BillsComponent } from './bills/bills.component';
 
 
 
@@ -14,7 +15,8 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     AppComponent,
     MainMenuComponent,
-    LoginComponent
+    LoginComponent,
+    BillsComponent
   ],
   imports: [
     BrowserModule,
