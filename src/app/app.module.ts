@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule, 
-  MatMenuModule, MatToolbarModule, MatIconModule, MatTableModule } from '@angular/material';
+  MatMenuModule, MatToolbarModule, MatIconModule, MatTableModule, MatSelectModule } from '@angular/material';
 import {routing} from './app.routing';
 import { AppComponent } from './app.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
@@ -31,6 +31,7 @@ import { CashBoxComponent } from './cash-box/cash-box.component';
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
+    MatSelectModule,
     routing
   ],
   providers: [],
