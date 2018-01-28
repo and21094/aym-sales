@@ -1,14 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule } from '@angular/material';
-
+import { MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule, 
+  MatMenuModule, MatToolbarModule, MatIconModule } from '@angular/material';
+import {routing} from './app.routing';
 import { AppComponent } from './app.component';
+import { MainMenuComponent } from './main-menu/main-menu.component';
+import { LoginComponent } from './login/login.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainMenuComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +25,8 @@ import { AppComponent } from './app.component';
     MatToolbarModule,
     MatIconModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]

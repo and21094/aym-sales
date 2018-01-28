@@ -1,0 +1,14 @@
+.login-card {
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0;
+	text-align: center;
+}
+.login-actions {
+	padding: 24px;
+    padding-bottom: 10px !important;
+}
+.login-content {
+	padding: 24px;
+}
