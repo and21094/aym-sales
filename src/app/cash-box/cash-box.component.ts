@@ -1,5 +1,7 @@
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
-import { MatTableDataSource} from '@angular/material';
+import { Component, AfterViewInit, ViewChild, Inject } from '@angular/core';
+import { MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
+import {ModalComponent} from '../modal/modal.component';
 
 @Component({
   selector: 'app-cash-box',
@@ -8,12 +10,22 @@ import { MatTableDataSource} from '@angular/material';
 })
 export class CashBoxComponent {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
 
+  openDialog(): void {
+    let dialogRef = this.dialog.open(ModalComponent, {
+      width: '2500px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+  }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -54,3 +66,5 @@ const ELEMENT_DATA: Element[] = [
   {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
   {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
 ];
+
+
