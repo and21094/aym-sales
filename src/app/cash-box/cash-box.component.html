@@ -1,5 +1,17 @@
-<div class="example-container mat-elevation-z8">
-    <div class="example-header">
+<mat-toolbar>Caja &nbsp;
+    <button mat-button (click)="openDialog()">
+        <mat-icon>lock_open</mat-icon>
+        Abrir Caja
+      </button>
+
+      <button mat-button>
+          <mat-icon>lock_outline</mat-icon>
+          Cerrar Caja
+        </button>
+</mat-toolbar>
+
+<div class="table-container mat-elevation-z8">
+    <div class="table-header">
       <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
       </mat-form-field>
@@ -35,6 +47,6 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
 
-  
   </div>
+
   
