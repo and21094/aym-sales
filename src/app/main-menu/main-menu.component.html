@@ -3,16 +3,15 @@
     <mat-icon>library_books</mat-icon>
     Facturación
   </button>
-  &nbsp;
+  <button mat-button [routerLink]="[{ outlets: { menuOutlet: ['cashbox'] } }]">
+      <mat-icon>payment</mat-icon>
+      Caja
+  </button>
+
   <button mat-button routerLink="/login" style="position: absolute; right: 10px;">
     <mat-icon>exit_to_app</mat-icon>
     Salir
   </button>
-  
-  <button mat-button [routerLink]="[{ outlets: { menuOutlet: ['cashbox'] } }]">
-      <mat-icon>payment</mat-icon>
-      Caja
-    </button>
 
 </mat-toolbar>
 <div class="menuContainer">
