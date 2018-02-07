@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule, 
-  MatMenuModule, MatToolbarModule, MatIconModule, MatTableModule, MatDialogModule } from '@angular/material';
+  MatMenuModule, MatToolbarModule, MatIconModule, MatTableModule, MatDialogModule,MatSelectModule } from '@angular/material';
 import {routing} from './app.routing';
 import { AppComponent } from './app.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
@@ -34,6 +34,7 @@ import { ModalComponent } from './modal/modal.component';
     MatInputModule,
     MatTableModule,
     MatDialogModule,
+    MatSelectModule,
     routing
   ],
   providers: [],
