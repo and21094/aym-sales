@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, ViewChild, Inject } from '@angular/core';
 import { MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import {ModalComponent} from '../modal/modal.component';
 
@@ -10,11 +11,12 @@ import {ModalComponent} from '../modal/modal.component';
 })
 export class CashBoxComponent {
 
-  constructor(public dialog: MatDialog) { }
+  htmlContent: string = "<p>Content goes here</p>";
+
+  constructor(public dialog: MatDialog, private dom: DomSanitizer) { }
 
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
-
 
   openDialog(): void {
     let dialogRef = this.dialog.open(ModalComponent, {
@@ -25,6 +27,8 @@ export class CashBoxComponent {
       console.log('The dialog was closed');
       // this.animal = result;
     });
+
+    dialogRef.componentInstance.htmlContent = this.dom.bypassSecurityTrustHtml(this.htmlContent);
   }
 
   applyFilter(filterValue: string) {
