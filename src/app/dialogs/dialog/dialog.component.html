@@ -1,0 +1,9 @@
+<div id="dialog" class="dialog-bg" [@dialog] *ngIf="visible">
+	<div class="dialog-content">
+		<ng-content></ng-content>
+		<div class="dialog-footer">
+			<button id="close-modal" (click)="close()" mat-button>{{negativeButton}}</button>
+			<button id="confirm-modal" mat-button>{{possitiveButton}}</button>
+		</div>
+	</div>
+</div>

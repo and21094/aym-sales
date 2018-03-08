@@ -1,8 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule, 
-  MatMenuModule, MatToolbarModule, MatIconModule, MatTableModule, MatDialogModule,MatSelectModule } from '@angular/material';
+import { MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule,
+  MatCardModule, 
+  MatMenuModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatTableModule,
+  MatDialogModule,
+  MatSelectModule,
+  MatGridListModule,
+  MatListModule } from '@angular/material';
 import {routing} from './app.routing';
 import { AppComponent } from './app.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
@@ -10,6 +20,8 @@ import { LoginComponent } from './login/login.component';
 import { BillsComponent } from './bills/bills.component';
 import { CashBoxComponent } from './cash-box/cash-box.component';
 import { ModalComponent } from './modal/modal.component';
+import { DialogComponent } from './dialogs/dialog/dialog.component';
+import { SearchCustomerDialogComponent } from './dialogs/search-customer-dialog/search-customer-dialog.component';
 
 
 
@@ -20,7 +32,9 @@ import { ModalComponent } from './modal/modal.component';
     LoginComponent,
     BillsComponent,
     CashBoxComponent,
-    ModalComponent
+    ModalComponent,
+    DialogComponent,
+    SearchCustomerDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +49,8 @@ import { ModalComponent } from './modal/modal.component';
     MatTableModule,
     MatDialogModule,
     MatSelectModule,
+    MatGridListModule,
+    MatListModule,
     routing
   ],
   providers: [],

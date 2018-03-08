@@ -1,71 +1,128 @@
+<app-dialog #dialog [(visible)]="showDialog">
+  <app-search-customer-dialog></app-search-customer-dialog>
+</app-dialog>
+
 <mat-toolbar>Facturación</mat-toolbar>
-<div class="table-container mat-elevation-z8">
-    <div class="table-header">
-      <mat-form-field style="width: 170px;">
-        <input matInput type="number" placeholder="Código del producto">
-      </mat-form-field>
-      <mat-form-field style="width: 170px;">
-        <input matInput type="number" placeholder="Cantidad">
-      </mat-form-field>
-      <mat-form-field style="width: 170px;">
-        <mat-select placeholder="Precio">
-          <mat-option *ngFor="let price of prices" [value]="price.id">
-            {{ price.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field style="width: 170px;">
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
-      </mat-form-field>
+<!-- Table of products -->
+    <div class="product-list">
+      
+    <div class="table-container mat-elevation-z8">
+      <div class="table-header">
+        <mat-form-field style="width: 200px;">
+          <input matInput placeholder="Cliente" type="text" value="Cliente">
+          <mat-icon matSuffix (click)="openModal(dialog)" style="cursor: pointer;" title="Buscar cliente">search</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field style="width: 200px;">
+          <input matInput type="text" placeholder="A nombre de" value="Cliente">
+        </mat-form-field>
+
+        <mat-form-field style="width: 200px; float: right;">
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar producto">
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field style="width: 170px;">
+          <input matInput type="number" placeholder="Código del producto">
+        </mat-form-field>
+        
+        <mat-form-field style="width: 170px;">
+          <input matInput type="number" placeholder="Cantidad">
+        </mat-form-field>
+        
+        <mat-form-field style="width: 170px;">
+          <mat-select placeholder="Precio">
+            <mat-option *ngFor="let price of prices" [value]="price.id">
+              {{ price.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field style="width: 170px;">
+          <mat-select placeholder="Comprobante">
+            <mat-option *ngFor="let voucher of vouchers" [value]="voucher.id">
+              {{ voucher.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    
+      <mat-table #table [dataSource]="dataSource">
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="code">
+            <mat-header-cell *matHeaderCellDef> Código </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.code}} </mat-cell>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef> Descripción </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="unitPrice">
+            <mat-header-cell *matHeaderCellDef> Precio unitario (iv) </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.unitPrice}} </mat-cell>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="quantity">
+            <mat-header-cell *matHeaderCellDef> Cantidad </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.quantity}} </mat-cell>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="percent">
+            <mat-header-cell *matHeaderCellDef> % Descuento </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.percent}} </mat-cell>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="discount">
+            <mat-header-cell *matHeaderCellDef> Descuento </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.discount}} </mat-cell>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="total">
+            <mat-header-cell *matHeaderCellDef> Total (iv) </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
+          </ng-container>
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    
+    </div>    
     </div>
-  
-    <mat-table #table [dataSource]="dataSource">
-
-        <!-- Position Column -->
-        <ng-container matColumnDef="code">
-          <mat-header-cell *matHeaderCellDef> Código </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.code}} </mat-cell>
-        </ng-container>
-    
-        <!-- Name Column -->
-        <ng-container matColumnDef="description">
-          <mat-header-cell *matHeaderCellDef> Descripción </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
-        </ng-container>
-
-        <!-- Name Column -->
-        <ng-container matColumnDef="unitPrice">
-          <mat-header-cell *matHeaderCellDef> Precio unitario (iv) </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.unitPrice}} </mat-cell>
-        </ng-container>
-    
-        <!-- Weight Column -->
-        <ng-container matColumnDef="quantity">
-          <mat-header-cell *matHeaderCellDef> Cantidad </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.quantity}} </mat-cell>
-        </ng-container>
-    
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="percent">
-          <mat-header-cell *matHeaderCellDef> % Descuento </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.percent}} </mat-cell>
-        </ng-container>
-
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="discount">
-          <mat-header-cell *matHeaderCellDef> Descuento </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.discount}} </mat-cell>
-        </ng-container>
-
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="total">
-          <mat-header-cell *matHeaderCellDef> Total (iv) </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
-        </ng-container>
-    
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      </mat-table>
-
-  
-  </div>
+<!--Total price table-->
+    <div class="products-total mat-elevation-z8">
+      <mat-list>
+       <mat-list-item> SubTotal:&nbsp;<span class="bold-font">0</span> </mat-list-item>
+       <mat-list-item> Descuento:&nbsp;
+        <span class="bold-font">0</span>
+        &nbsp;(<span class="bold-font">0%</span>)
+      </mat-list-item>
+       <mat-list-item> SubTotal:&nbsp;<span class="bold-font">0</span> </mat-list-item>
+       <mat-list-item> Impuesto:&nbsp;<span class="bold-font">0</span> </mat-list-item>
+       <mat-list-item style="font-size: x-large" class="bold-font"> Total:&nbsp;<span>0</span> </mat-list-item>
+      </mat-list>
+      <div class="bill-actions-container">
+        <button mat-raised-button>
+          <mat-icon>comment</mat-icon> Comentarios
+        </button>
+        <br><br>
+        <button mat-raised-button>
+          <mat-icon>cached</mat-icon> Cambiar cobro
+        </button>
+        <br><br>
+        <button mat-raised-button color="warn" class="undo-button">
+          <mat-icon>remove_shopping_cart</mat-icon> Anular
+        </button>
+        <button mat-raised-button color="primary">
+          <mat-icon>shopping_cart</mat-icon> Emitir
+        </button>
+      </div>
+    </div>

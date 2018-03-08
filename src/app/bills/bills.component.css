@@ -1,0 +1,27 @@
+.product-list {
+	display: inline-block;
+	width: 79%;
+}
+
+.products-total {
+	display: inline-block;
+	position: absolute;
+	width: 20%;
+	min-width: 175px;
+	margin-left: 10px;
+}
+
+.bill-actions-container {
+	text-align: center;
+	padding: 10px;
+}
+
+.table-header {
+	padding: 15px 24px 15px 24px;
+}
+
+@media only screen and (max-width: 1102px) {
+    .undo-button {
+    	margin-bottom: 15px;
+    }
+}

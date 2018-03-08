@@ -10,11 +10,19 @@ import { SafeHtml } from '@angular/platform-browser';
 export class ModalComponent implements OnInit {
 
   htmlContent: SafeHtml;
+  title: string;
+  negative: string;
+  positive: string;
 
   constructor(public dialogRef: MatDialogRef<ModalComponent>) { }
 
   ngOnInit() {
   }
 
+  initValues(title, positive, negative) {
+  	this.title = title;
+  	this.positive = positive
+  	this.negative = negative
+  }
 
 }

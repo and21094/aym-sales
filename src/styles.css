@@ -2,9 +2,14 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 body {
-    background:#fafafa;
+  background:#fafafa;
 	font-family: 'Roboto';
 	margin:0;
+  min-width: 955px;
+}
+
+.container {
+  min-width: 955px;
 }
 
 a {
@@ -20,8 +25,10 @@ a {
 .table-container {
   display: flex;
   flex-direction: column;
-  min-width: 300px;
+  min-width: 740px;
   max-height: 74vh;
+  overflow-y: hidden;
+  overflow-x: auto;
 }
   
 .table-header {
@@ -37,4 +44,8 @@ a {
 .mat-table {
   overflow: auto;
   max-height: 500px;
+}
+
+.bold-font {
+  font-weight: bold;
 }
